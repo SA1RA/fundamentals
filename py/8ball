@@ -1,0 +1,41 @@
+#!/usr/bin/env python
+
+import random
+import skilstak.colors as c
+
+welcome_message = '''
+Hello and welcome to the 8ball.
+Ask your question below.
+'''
+
+answers = [
+    'yes', 'no'
+]
+
+def welcome():
+    print(c.clear + welcome_message)
+
+def ask(prompt):
+    answer = input(prompt).strip().lower()
+    return answer
+
+def bye():
+    print("bye bye")
+    exit()
+
+def handle_question():
+    question = ask("> " + c.b3)
+    print(c.reset + end='')
+    if question == 'bye' or question == 'goodbye':
+        bye()
+    else:
+        answer = random.choice(answers)
+        print(answer)
+
+if __name__  == '__main__':
+    try:
+        welcome()
+        while True:
+            handle_question()
+    except KeyboardInterrupt:
+        exit()
